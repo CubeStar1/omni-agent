@@ -183,18 +183,43 @@ docker-compose up -d
 
 ## Configuration
 
+## Database
+- Go to [Supabase](https://app.supabase.io/) and create a new project.
+- Paste the migrations from `frontend/lib/supabase/migrations.sql` into the SQL editor and run them.
+- Get your Supabase URL and Anon Key from the project settings.
+
 ### Frontend (.env) - Main Application
 ```env
-NEXT_PUBLIC_API_URL=http://localhost:8000
-NEXT_PUBLIC_MCP_URL=http://localhost:8001  # Optional: only if using Python MCP tools
-NEXT_PUBLIC_SUPABASE_URL=your-supabase-url
-NEXT_PUBLIC_SUPABASE_ANON_KEY=your-supabase-key
+NEXT_PUBLIC_SUPABASE_URL=
+NEXT_PUBLIC_SUPABASE_ANON_KEY=
+SUPABASE_ADMIN=
 
-# AI Provider Keys (can be set here or in the UI)
-OPENAI_API_KEY="your-openai-key"
-GEMINI_API_KEY=your-gemini-key
-GROQ_API_KEY="your-groq-key"
-CEREBRAS_API_KEY="your-cerebras-key"
+RESEND_API_KEY=
+RESEND_DOMAIN=
+
+NEXT_PUBLIC_APP_NAME=HackRX Chat
+NEXT_PUBLIC_APP_ICON='/logos/hackrx-logo.webp'
+
+# AI Providers
+
+OPENAI_API_KEY=
+XAI_API_KEY=
+GROQ_API_KEY=
+HACKRX_API_KEY=
+HACKRX_BASE_URL="https://register.hackrx.in/llm/openai"
+HACKRX_MCP_MODEL=hackrx-gpt-4.1-mini
+
+# AI Tools
+TAVILY_API_KEY=
+
+NEXT_PUBLIC_MCP_URL=http://127.0.0.1:8001/mcp
+
+# VoltAgent Observability
+VOLTAGENT_PUBLIC_KEY=
+VOLTAGENT_SECRET_KEY=
+
+GITHUB_PERSONAL_ACCESS_TOKEN=
+
 ```
 
 ### Python Tools Backend (.env) - Optional
