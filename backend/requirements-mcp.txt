@@ -1,0 +1,7 @@
+# MCP Server Dependencies
+
+fastmcp
+anyio
+jsonschema
+structlog
+typing-extensions

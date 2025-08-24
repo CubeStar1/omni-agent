@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  hackrx-backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: hackrx-api
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    environment:
+      - PYTHONPATH=/app
+    volumes:
+      # Mount for persistent storage of results and cache
+      - ./results:/app/results
+      - ./vector_store_cache:/app/vector_store_cache
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    networks:
+      - hackrx-network
+
+networks:
+  hackrx-network:
+    driver: bridge

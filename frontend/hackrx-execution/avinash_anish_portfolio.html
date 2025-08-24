@@ -1,0 +1,6 @@
+const fs = require('fs');
+
+const htmlContent = `<!DOCTYPE html>\n<html lang='en'>\n<head>\n    <meta charset='UTF-8'>\n    <meta name='viewport' content='width=device-width, initial-scale=1.0'>\n    <title>Avinash Anish Portfolio</title>\n    <style>\n        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f4f4f4; }\n        header { background: #35424a; color: #ffffff; padding: 10px 0; text-align: center; }\n        section { padding: 20px; }\n        footer { text-align: center; padding: 10px 0; background: #35424a; color: #ffffff; position: relative; bottom: 0; width: 100%; }\n    </style>\n</head>\n<body>\n    <header>\n        <h1>Welcome to Avinash Anish's Portfolio</h1>\n    </header>\n    <section>\n        <h2>About Me</h2>\n        <p>Hi! I'm Avinash Anish, a passionate web developer.</p>\n        <h2>Projects</h2>\n        <ul>\n            <li>Project 1: Description</li>\n            <li>Project 2: Description</li>\n            <li>Project 3: Description</li>\n        </ul>\n    </section>\n    <footer>\n        <p>Contact: avinash@example.com</p>\n    </footer>\n</body>\n</html>`;
+
+fs.writeFileSync('avinash_anish_portfolio.html', htmlContent);
+console.log('HTML file created successfully.');

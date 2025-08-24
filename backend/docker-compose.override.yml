@@ -1,0 +1,17 @@
+# Docker Compose override for development
+# This file allows you to override settings for development
+version: '3.8'
+
+services:
+  hackrx-backend:
+    # Enable environment variable debugging
+    environment:
+      - DEBUG=true
+      - PYTHONPATH=/app
+    # Mount source code for development (optional)
+    # volumes:
+    #   - .:/app
+    #   - ./results:/app/results
+    #   - ./vector_store_cache:/app/vector_store_cache
+    # Keep container running for debugging
+    # command: tail -f /dev/null

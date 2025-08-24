@@ -1,0 +1,7 @@
+# This directory contains dynamically generated JavaScript files for HackRx challenges
+# Keep the directory but ignore the generated files
+
+*.js
+*.js.map
+!.gitignore
+!README.md

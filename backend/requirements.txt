@@ -1,0 +1,57 @@
+# Web framework
+fastapi
+uvicorn
+
+# Pydantic
+pydantic
+pydantic-settings
+
+# Document processing
+langchain-markitdown
+pymupdf
+pymupdf4llm
+pytesseract
+pillow
+pptx2img
+python-pptx
+python-multipart
+opencv-python
+easyocr
+
+# LangChain ecosystem
+langchain
+langchain-community
+langchain-openai
+langchain-pinecone
+langchain-groq
+langchain-pymupdf4llm
+
+# Vector stores
+pgvector
+qdrant-client
+langchain-qdrant
+
+# HTTP client
+aiohttp
+httpx
+aiofiles
+# Environment
+python-dotenv
+
+# Database
+supabase
+
+# Google AI
+google-generativeai
+langchain-google-genai
+
+# MCP Server
+fastmcp
+anyio
+jsonschema
+structlog
+typing-extensions
+
+# Additional dependencies for Docker/Linux compatibility
+wheel
+setuptools
