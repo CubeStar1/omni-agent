@@ -8,8 +8,8 @@ import { Toaster } from "@/components/ui/toaster"
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'HackRX Chat',
-  description: 'HackRX Chat',
+  title: 'OmniAgent',
+  description: 'OmniAgent',
 }
 
 export default function RootLayout({

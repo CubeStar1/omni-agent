@@ -2,11 +2,12 @@ import { VoltAgent, Agent } from "@voltagent/core";
 import { VercelAIProvider } from "@voltagent/vercel-ai";
 import { getModelForAgent } from './utils/modelProvider';
 import { getMCPTools } from "./tools/mcpTools";
-import { getHackRxUnifiedSystemPrompt } from '@/app/chat/lib/ai/prompts/base-prompt';
+import { getGeneralAgentPrompt } from '@/app/chat/lib/ai/prompts/general-agent';
 import { createTool } from "@voltagent/core";
 import { z } from "zod";
 import { javaScriptTool } from '@/app/chat/lib/ai/tools/javascript-tool';
 import { createCodeFileTool } from '@/app/chat/lib/ai/tools/create-code-file';
+import { tavilySearchTool } from "./tools/customTools";
 
 function convertAIToolToVoltAgent(name: string, aiTool: any) {
   return createTool({
@@ -28,9 +29,10 @@ function convertAIToolToVoltAgent(name: string, aiTool: any) {
 async function getAllTools() {
   const tools: any[] = [];
   
-  tools.push(convertAIToolToVoltAgent('javaScriptTool', javaScriptTool));
-  tools.push(convertAIToolToVoltAgent('createCodeFileTool', createCodeFileTool));
-  
+  // tools.push(convertAIToolToVoltAgent('javaScriptTool', javaScriptTool));
+  // tools.push(convertAIToolToVoltAgent('createCodeFileTool', createCodeFileTool));
+  tools.push(convertAIToolToVoltAgent('tavilySearch', tavilySearchTool));
+
   try {
     const mcpTools = await getMCPTools();
     Object.entries(mcpTools).forEach(([name, tool]) => {
@@ -47,10 +49,11 @@ async function getAllTools() {
 
 const agent = new Agent({
   name: "HackRXAgent",
-  instructions: getHackRxUnifiedSystemPrompt(),
+  instructions: getGeneralAgentPrompt(),
   llm: new VercelAIProvider(),
   model: getModelForAgent(), 
   tools: await getAllTools(),
+  maxSteps: 20
 });
 
 export { agent };

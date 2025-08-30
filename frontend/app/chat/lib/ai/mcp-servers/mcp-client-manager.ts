@@ -53,12 +53,27 @@ function createMCPClientManager(): MCPClientManager {
       enabled: true
     },
 
-    python: {
+    computer: {
       name: 'python',
       url: 'http://127.0.0.1:8001/mcp',
       transport: 'http',
-      enabled: true
+      enabled: false
     },
+
+    v0: {
+      name: 'v0',
+      command: "npx",
+      args: [
+        "mcp-remote",
+        "https://mcp.v0.dev",
+        "--header",
+        "Authorization: Bearer v1:d26X3nJ7mNh9UZPFeeC5Cy0T:FbeW8NZLX8zugE58Bf7TopCJ"
+      ],
+      transport: 'stdio',
+      enabled: true
+
+    }
+  
     
     /*
     github: {

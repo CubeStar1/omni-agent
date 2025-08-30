@@ -17,7 +17,9 @@ import { ImageDisplay } from './tool-displays/image-display';
 import { TavilySearchResult } from "./tool-displays/tavily-search-result";
 import { RagResultDisplay } from './tool-displays/rag-result-display';
 import { GenericToolDisplay } from './tool-displays/generic-tool-display';
+import { V0ToolDisplay } from './tool-displays/v0-tool-display';
 import { FunctionSquareIcon } from "lucide-react";
+
 
 const TOOL_COMPONENTS: { [key: string]: React.FC<any> } = {
   querySupabase: ({ result }) => <SupabaseQuery data={result} />,
@@ -26,6 +28,14 @@ const TOOL_COMPONENTS: { [key: string]: React.FC<any> } = {
   ragRetrieval: ({ result }) => <RagResultDisplay chunks={result.chunks} />,
   generateImage: ({ result }) => <ImageDisplay {...result} />,
 };
+
+function getToolComponent(toolName: string): React.FC<any> {
+  if (toolName.startsWith('v0_')) {
+    return ({ result }: any) => <V0ToolDisplay data={result} />;
+  }
+  return TOOL_COMPONENTS[toolName] || GenericToolDisplay;
+}
+
 
 const TOOL_DISPLAY_NAMES: { [key: string]: string } = {
   querySupabase: "Database Query",
@@ -36,6 +46,13 @@ const TOOL_DISPLAY_NAMES: { [key: string]: string } = {
   sendHealthReport: "Sending Health Report",
   stagehandRun: "Stagehand Automation",
 };
+
+function getToolDisplayName(toolName: string): string {
+  if (toolName.startsWith('v0_')) {
+    return 'v0 Website Tool';
+  }
+  return TOOL_DISPLAY_NAMES[toolName] || toolName;
+}
 
 const TOOL_ICONS: { [key: string]: React.ComponentType<{ className?: string }> } = {
   querySupabase: Database,
@@ -234,10 +251,10 @@ function ToolResultDisplayInternal({
 }: ToolResultDisplayProps) {
 
 
-      const toolDisplayName = TOOL_DISPLAY_NAMES[toolCall.toolName] || toolCall.toolName;
-    const ToolIcon = TOOL_ICONS[toolCall.toolName] || FunctionSquareIcon;
-  const ToolComponent = TOOL_COMPONENTS[toolCall.toolName] || GenericToolDisplay;
-    const colors = TOOL_COLORS[toolCall.toolName] || {
+  const toolDisplayName = getToolDisplayName(toolCall.toolName);
+  const ToolIcon = TOOL_ICONS[toolCall.toolName] || FunctionSquareIcon;
+  const ToolComponent = getToolComponent(toolCall.toolName);
+  const colors = TOOL_COLORS[toolCall.toolName] || {
     bg: "bg-gray-50 dark:bg-gray-950/20",
     text: "text-gray-700 dark:text-gray-300",
     line: "bg-gray-500",
@@ -430,7 +447,7 @@ function ToolResultDisplayInternal({
 
                           <div>
                             {(() => {
-                              const ToolComponent = TOOL_COMPONENTS[toolCall.toolName] || GenericToolDisplay;
+                              const ToolComponent = getToolComponent(toolCall.toolName);
                               return <ToolComponent result={data} args={toolCall.args} />;
                             })()}
                           </div>
