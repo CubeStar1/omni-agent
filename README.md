@@ -207,7 +207,7 @@ docker-compose logs -f
 
 ## Configuration
 
-## Database
+### Database
 - Go to [Supabase](https://app.supabase.io/) and create a new project.
 - Paste the migrations from `frontend/lib/supabase/migrations.sql` into the SQL editor and run them.
 - Get your Supabase URL and Anon Key from the project settings.
@@ -225,7 +225,6 @@ NEXT_PUBLIC_APP_NAME=HackRX Chat
 NEXT_PUBLIC_APP_ICON='/logos/hackrx-logo.webp'
 
 # AI Providers
-
 OPENAI_API_KEY=
 XAI_API_KEY=
 GROQ_API_KEY=
@@ -294,7 +293,7 @@ AGENT_ENABLED=true
 **For Rounds 5, 6, 7 - Primary Backend:**
 - **Base URL**: `http://127.0.0.1:3000`
 - **Chat Interface**: `http://127.0.0.1:3000/chat`
-- **HackRX Evaluation Endpoint**: `http://127.0.0.1:3000/api/hackrx/run` ⭐ **Main Backend API**
+- **HackRX Evaluation Endpoint**: `http://127.0.0.1:3000/api/hackrx/run`
 - **Chat API**: `http://127.0.0.1:3000/api/chat`
 
 ### Python Tools Backend (Optional - Rounds 1-4)
@@ -381,8 +380,6 @@ docker-compose logs -f            # View logs
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
 
 ## Acknowledgements
 
