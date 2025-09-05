@@ -2,6 +2,8 @@ import { createOpenAI } from '@ai-sdk/openai';
 import { createGoogleGenerativeAI } from '@ai-sdk/google';
 import { createXai } from '@ai-sdk/xai';
 import { createGroq } from "@ai-sdk/groq";
+import { createOpenRouter } from '@openrouter/ai-sdk-provider';
+
 
 const openai = createOpenAI({
   apiKey: process.env.OPENAI_API_KEY,
@@ -24,13 +26,16 @@ const hackrx = createOpenAI({
   baseURL: process.env.HACKRX_BASE_URL,
 });
 
+const openrouter = createOpenRouter({
+  apiKey: process.env.OPENROUTER_API_KEY,
+});
+
 // Return a dynamic value function that VoltAgent expects
 export function getModelForAgent(selectedModel?: string) {
   return () => {
-    const model = selectedModel || process.env.SELECTED_MODEL || 'gpt-4o-mini';
+    const model = selectedModel || process.env.SELECTED_MODEL || 'gpt-4.1-mini';
     
     switch (model) {
-      case 'gpt-4o-mini':
       case 'gpt-4.1-mini':
       case 'gpt-4.1':
         return openai(model);

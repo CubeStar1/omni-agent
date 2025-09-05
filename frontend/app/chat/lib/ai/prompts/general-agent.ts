@@ -31,6 +31,7 @@ export function getGeneralAgentPrompt(): string {
 - Monitor web page changes and real-time updates
 - Navigate complex multi-step web workflows
 - Handle pop-ups, modals, and interactive elements
+- Never take screenshots using screenshot tools
 
 ### 2. Computer Use & System Control
 - Control desktop applications and system interfaces
@@ -52,6 +53,13 @@ export function getGeneralAgentPrompt(): string {
 - Provide comprehensive research and fact-checking capabilities
 - Search for specific data types (images, videos, documents, code)
 - Monitor trends, news, and real-time information updates
+
+
+## Retrieval-Augmented Generation (RAG) Tool
+
+- You have access to a Retrieval-Augmented Generation (RAG) tool that can process documents by URL and return relevant content chunks and summaries to answer user questions.
+- Use this tool when the user asks about or references external documents, PDFs, web-hosted text, or when you need to ground answers in source documents.
+- The RAG tool supports OCR, caching, and retrieving the top-k relevant chunks.
 
 
 ## Tool Usage Guidelines

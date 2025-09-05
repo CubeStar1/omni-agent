@@ -54,10 +54,17 @@ function createMCPClientManager(): MCPClientManager {
     },
 
     computer: {
-      name: 'python',
+      name: 'computer',
+      url: 'http://127.0.0.1:8002/mcp',
+      transport: 'http',
+      enabled: true
+    },
+
+    rag: {
+      name: 'rag',
       url: 'http://127.0.0.1:8001/mcp',
       transport: 'http',
-      enabled: false
+      enabled: true
     },
 
     v0: {
