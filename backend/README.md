@@ -1,12 +1,12 @@
-# HackRX Backend - Python FastAPI Server (Rounds 1-4)
+# OmniAgent Backend - Python FastAPI Server (Rounds 1-4)
 
 - Python FastAPI backend with MCP server for document processing and LLM tools
 - This was the primary backend for Rounds 1-4. For Rounds 5,6,7, the Next.js API routes are the primary backend.
-- The rag tools are exposed as MCP tools for use in the Next.js backend.
+- The RAG tools are exposed as MCP tools for use in the Next.js backend.
 
 ## Overview
 
-This is the Python backend component of the HackRX Intelligence System. It provides:
+This is the Python backend component of the OmniAgent Intelligence System. It provides:
 - **FastAPI Server**: High-performance API with automatic documentation
 - **MCP Server**: Model Context Protocol server for tool integration using FastMCP
 - **Document Processing**: Advanced RAG pipeline with multiple vector store support
@@ -266,4 +266,8 @@ backend/
 ├── docker-compose.yml   # Docker Compose setup
 └── .env.example         # Environment template
 ```
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](../LICENSE) file for details.
 

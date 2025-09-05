@@ -1,6 +1,8 @@
-# HackRX API Frontend + Backend (Rounds 5, 6, 7)
+# OmniAgent Frontend + Backend (Rounds 5, 6, 7)
 
-This is the comprehensive frontend for the HackRX API, built with Next.js and Tailwind CSS. It features a dashboard for visualizing HackRX API requests, an intelligent chat interface, and VoltAgent integration for enhanced observability.
+This is the comprehensive frontend for the OmniAgent system, built with Next.js and Tailwind CSS. It features a dashboard for visualizing API requests, an intelligent chat interface, and VoltAgent integration for enhanced observability.
+
+**Note**: This serves as the main backend for Rounds 5, 6, 7. The Python backend is supplementary for advanced document processing tools.
 
 ## Features
 
@@ -52,20 +54,42 @@ npm install
 # Supabase
 NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+SUPABASE_ADMIN=your_supabase_service_key
+
+# Resend (Email)
+RESEND_API_KEY=your_resend_api_key
+RESEND_DOMAIN=your_resend_domain
+
+# App Configuration
+NEXT_PUBLIC_APP_NAME=OmniAgent Chat
+NEXT_PUBLIC_APP_ICON='/logos/omni-logo.webp'
 
 # AI Models
 OPENAI_API_KEY=your_openai_api_key
-GOOGLE_GENERATIVE_AI_API_KEY=your_google_ai_key
 XAI_API_KEY=your_xai_api_key
 GROQ_API_KEY=your_groq_api_key
-
-# HackRX API
 HACKRX_API_KEY=your_hackrx_api_key
-HACKRX_BASE_URL=your_hackrx_base_url
+HACKRX_BASE_URL="https://register.hackrx.in/llm/openai"
+HACKRX_MCP_MODEL=hackrx-gpt-4.1-mini
 
-# Model Selection
-SELECTED_MODEL=gpt-4o-mini
+# AI Tools
+TAVILY_API_KEY=your_tavily_api_key
+
+# MCP Integration (Optional - for Python backend tools)
+NEXT_PUBLIC_MCP_URL=http://127.0.0.1:8001/mcp
+
+# VoltAgent Observability
+VOLTAGENT_PUBLIC_KEY=your_voltagent_public_key
+VOLTAGENT_SECRET_KEY=your_voltagent_secret_key
+
+# GitHub Integration
+GITHUB_PERSONAL_ACCESS_TOKEN=your_github_token
 ```
+
+**Database Setup:**
+- Go to [Supabase](https://app.supabase.io/) and create a new project
+- Run the migrations from `lib/supabase/migrations.sql` in the SQL editor
+- Get your Supabase URL and Keys from project settings
 
 5. Run the development server:
 
@@ -122,5 +146,9 @@ frontend/
 - **Tool Execution**: MCP (Model Context Protocol) tools integration
 - **Multi-Agent**: Coordination between different AI agents
 - **Debugging**: Comprehensive logging and error tracking
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](../LICENSE) file for details.
 
 
